@@ -4,6 +4,16 @@ from nonebot import on_command
 
 from hoshino import R, Service, priv, util
 
+def pic_gender_imgpath(dic_name):
+    '''
+    获得/res/img/dic_name目录下一张随机图片，返回文件名
+    '''
+    pic_dir = R.img(dic_name).path
+    
+    file_list:list = os.listdir(pic_dir)
+    img_random = random.choice(file_list)
+    img_path = dic_name + '/' + img_random
+    return img_path
 
 # basic function for debug, not included in Service('chat')
 @on_command('zai?', aliases=('在?', '在？', '在吗', '在么？', '在嘛', '在嘛？'), only_to_me=True)
@@ -66,6 +76,19 @@ async def chat_queshi(bot, ctx):
 async def chat_clanba(bot, ctx):
     if random.random() < 0.02:
         await bot.send(ctx, R.img('我的天啊你看看都几度了.jpg').cqcode)
+        
+@sv.on_keyword(('挂树'))
+async def chat_clanba(bot, ctx):
+    if random.random() < 0.2:
+        imgpath = pic_gender_cqcode('chat/挂树')
+        await bot.send(ctx, R.img('imgpath').cqcode)
+
+
+@sv.on_fullmatch(('？'))
+async def chat_clanba(bot, ctx):
+    if random.random() < 0.5:
+        imgpath = pic_gender_cqcode('chat/？')
+        await bot.send(ctx, R.img('imgpath').cqcode)
 
 
 @sv.on_keyword(('内鬼'))
