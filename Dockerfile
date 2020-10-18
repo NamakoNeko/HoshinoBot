@@ -13,6 +13,7 @@ RUN apt-get install -y apt-utils libterm-readkey-perl
 RUN apt-get install -y libxml2-dev libxslt-dev python-dev gfortran libopenblas-dev liblapack-dev libatlas-base-dev libblas-dev libjpeg-dev zlib1g-dev build-essential libxft-dev libpng-dev
 #更换PIP源为阿里云 境外服务器请注释掉
 RUN pip config set global.index-url https://mirrors.aliyun.com/pypi/simple
+RUN /usr/local/bin/python3.9 -m pip install --upgrade pip
 RUN pip install --upgrade setuptools feedparser
 RUN pip install Cython
 RUN pip install -r requirements.txt
