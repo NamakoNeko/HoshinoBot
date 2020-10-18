@@ -10,6 +10,10 @@ from hoshino.util import FreqLimiter, concat_pic, pic2b64, silence
 
 from .. import chara
 
+import os
+from os import path
+font_path = path.join(path.abspath(path.dirname(__file__)),"msyh.ttf")
+
 sv_help = '''
 [怎么拆] 接防守队角色名 查询竞技场解法
 [点赞] 接作业id 评价作业
@@ -55,7 +59,7 @@ def render_atk_def_teams(entries, border_pix=5):
     n = len(entries)
     icon_size = 64
     im = Image.new('RGBA', (5 * icon_size + 100, n * (icon_size + border_pix) - border_pix), (255, 255, 255, 255))
-    font = ImageFont.truetype('msyh.ttc', 16)
+    font = ImageFont.truetype(font_path , 16)
     draw = ImageDraw.Draw(im)
     for i, e in enumerate(entries):
         y1 = i * (icon_size + border_pix)

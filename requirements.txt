@@ -62,3 +62,4 @@ Werkzeug==1.0.1
 wsproto==0.15.0
 yarl==1.4.2
 zhconv==1.4.1
+python-Levenshtein>=0.12.0
